@@ -1,10 +1,11 @@
 {
-  "name": "custom-server-typescript",
+  "name": "political-sms-tools",
   "version": "1.0.0",
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js"
+    "start:static": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "next"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",

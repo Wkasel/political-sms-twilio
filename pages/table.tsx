@@ -13,6 +13,9 @@ import { sampleData } from '../utils';
 
 export default () => {
   return (
-    <h1>Test</h1>
+    <div>
+      <h1>Tables</h1>
+      <h1 />
+    </div>
   )
 }

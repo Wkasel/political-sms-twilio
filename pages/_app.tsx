@@ -5,22 +5,22 @@ import { Loader } from '../components'
 const TIMEOUT = 400
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <>
-            <PageTransition
-                timeout={TIMEOUT}
-                classNames="page-transition"
-                loadingComponent={<Loader />}
-                loadingDelay={500}
-                loadingTimeout={{
-                    enter: TIMEOUT,
-                    exit: 0,
-                }}
-                loadingClassNames="loading-indicator"
-            >
-                <Component {...pageProps} />
-            </PageTransition>
-            <style jsx global>{`
+  return (
+    <>
+      <PageTransition
+        timeout={TIMEOUT}
+        classNames="page-transition"
+        loadingComponent={<Loader />}
+        loadingDelay={500}
+        loadingTimeout={{
+          enter: TIMEOUT,
+          exit: 0,
+        }}
+        loadingClassNames="loading-indicator"
+      >
+        <Component {...pageProps} />
+      </PageTransition>
+      <style jsx global>{`
         .page-transition-enter {
           opacity: 0;
           transform: translate3d(0, 20px, 0);
@@ -47,8 +47,8 @@ function MyApp({ Component, pageProps }) {
           transition: opacity ${TIMEOUT}ms;
         }
       `}</style>
-        </>
-    )
+    </>
+  )
 }
 
 export default MyApp
