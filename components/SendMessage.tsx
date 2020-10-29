@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Input, FormControl, FormLabel, FormGroup, Button } from '@material-ui/core'
 
-function App() {
+export const SendSingleMessage = () => {
   const [number, setNumber] = useState("");
   const [body, setBody] = useState("");
 
@@ -30,32 +30,35 @@ function App() {
     <div className="App">
       <Container>
         <h2>Send SMS</h2>
-        <Form onSubmit={onSubmit}>
-          <Form.Group>
-            <Form.Label htmlFor="to">To</Form.Label>
-            <Form.Control
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </Form.Group>
+        <form onSubmit={onSubmit}>
+          <FormGroup>
+            <FormLabel htmlFor="to">To</FormLabel>
+            <FormControl>
+              <Input
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </FormControl>
+          </FormGroup>
 
-          <Form.Group>
-            <Form.Label htmlFor="message">Body</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows="3"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
+          <FormGroup>
+            <FormLabel htmlFor="message">Body</FormLabel>
+            <FormControl>
+              <Input
+                multiline
+                rows={3}
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+            </FormControl>
+          </FormGroup>
+          <Button variant="contained" type="submit">
             Send
           </Button>
-        </Form>
+        </form>
       </Container>
       {/* {console.log(`Number is ${number} and the Message is ${body}`)} */}
     </div>
   );
 }
-export default App;
+
