@@ -1,25 +1,28 @@
-// for secrets
-
-import { ApolloServer } from 'apollo-server-micro'
-import { schema } from '../../utils/data'
+// // for secrets
 
 
-const apolloServer = new ApolloServer({ schema })
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
 
-export default apolloServer.createHandler({ path: '/api/graphql' })
 
-// //https://www.youtube.com/watch?v=n_LcVqqHSY8
+
 
 // import { ApolloServer } from 'apollo-server-micro'
+
+// // import { makeExecutableSchema } from 'graphql-tools'
+
+// // this is a hack - bug report for next.js
+// // https://github.com/vercel/next.js/issues/11377
+// // @ts-ignore
 // import { schema } from '../../utils/data/schema'
 
-// const apolloServer = new ApolloServer({ schema })
+
+// const apolloServer = new ApolloServer({ typeDefs, resolvers })
+// // const apolloServer = new ApolloServer({
+// //   schema,
+// //   context(ctx) {
+// //     return ctx
+// //   },
+// // })
 
 // export const config = {
 //   api: {
@@ -28,3 +31,4 @@ export default apolloServer.createHandler({ path: '/api/graphql' })
 // }
 
 // export default apolloServer.createHandler({ path: '/api/graphql' })
+

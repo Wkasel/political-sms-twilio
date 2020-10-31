@@ -1,20 +1,7 @@
-
 // @ts-nocheck
 
-import Twilio from 'twilio';
-// const client = Twilio(
-//     process.env.TWILIO_ACCOUNT_SID,
-//     process.env.TWILIO_AUTH_TOKEN,
-//     { lazyLoading: true }
-// )
-const client = require('twilio')(
-    process.env.TWILIO_ACCOUNT_SID,
-    process.env.TWILIO_AUTH_TOKEN,
-    { lazyLoading: true }
-)
 
-
-
+import { sendSMS } from './SendSMS';
 
 export const resolvers = {
     Query: {
@@ -27,17 +14,8 @@ export const resolvers = {
     },
     Mutation: {
         sendSMS: async (parent, { to, body }, context) => {
-            try {
-                // return client.messages
-                //     .create({
-                //         from: '+15102889800',
-                //         to,
-                //         body
-                //     })
-                //     .then(message => console.log(message.sid));
-            } catch (e) {
-                console.error('error sending SMS')
-            }
+            console.log({ context })
+            await sendSMS(to, body)
         },
         stubSMS: async ({ }, { id, first_name, middle_name, last_name, phone }, { }) => {
             console.log({ id, first_name, middle_name, last_name, phone });
