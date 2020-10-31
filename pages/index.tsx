@@ -1,18 +1,48 @@
 // import Link from 'next/link'
-import { DataTable } from '../components'
-import { sampleData } from '../utils';
+// @ts-nocheck
+import React, { useLayoutEffect, useState } from 'react';
+import { Input, Button, Container, Grid } from '@material-ui/core';
+import { Uploader } from '../components/Uploader'
+import { ProgressBar } from '../components/ProgressBar';
 
-/**
- * <DataTable
-      data={sampleData}
-      csvDelimiter=","
-      renderCell=""
-      tableClassName="table table-striped table-hover"
-    />
- */
+const IndexPage = () => {
+  const [csv, setCsv] = useState(``);
+  const [data, setData] = useState();
+  const [ready, setReady] = useState(false);
+  const [totalRecords, setTotalRecords] = useState(0);
+  const [processedRecords, setProcessedRecords] = useState(0);
 
-export default () => {
+  const onUpload = React.useCallback((csv) => {
+    console.log('receiving...', csv)
+    setTotalRecords(csv.length);
+    setProcessedRecords(0);
+  }, [csv]);
+
   return (
-    <h1>Test</h1>
+    <Container>
+      <Grid>
+        <Grid row>
+          <h1>Table</h1>
+          <Uploader onDrop={onUpload} />
+          <hr />
+        </Grid>
+        <Grid row>
+          <ProgressBar numerator={processedRecords} denominator={totalRecords} />
+        </Grid>
+        <Grid row>
+          {ready ? (
+            <DataTable
+              data={data}
+              csvDelimiter=","
+              renderCell=""
+              tableClassName="table table-striped table-hover"
+            />
+          ) : null}
+        </Grid>
+      </Grid>
+    </Container>
   )
+
 }
+
+export default IndexPage;
