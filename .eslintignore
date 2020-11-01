@@ -1,0 +1,4 @@
+*.stories.tsx
+*.spec.tsx
+node_modules
+example
