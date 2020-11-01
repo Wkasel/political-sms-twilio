@@ -8,3 +8,12 @@ export const SAVE_PHONENUMBER = gql`
   }
 `;
 
+export const SEND_SMS = gql`
+  mutation sendSMS($to:String,$body:String) {
+    sendSMS(to:$to,body:$body) {
+      to
+      body
+    }
+  }
+`;
+
