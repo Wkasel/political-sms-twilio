@@ -90,13 +90,17 @@ const IndexPage = () => {
 
   return (
     <Container>
-      <Grid>
-        <Grid row>
-          <h1>Table</h1>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="stretch">
+        <Grid>
+          <h1>Uploader</h1>
           <Uploader onDrop={onUpload} />
           <hr />
         </Grid>
-        <Grid row>
+        <Grid>
           <div style={{ minHeight: 300 }}>
             <form>
               <FormControl style={{ width: "100%" }}>
@@ -107,13 +111,13 @@ const IndexPage = () => {
             </form>
           </div>
         </Grid>
-        <Grid row>
+        <Grid>
           Status: {status}
         </Grid>
-        <Grid row>
+        <Grid>
           <ProgressBar numerator={processedRecords} denominator={totalRecords} />
         </Grid>
-        <Grid row>
+        <Grid>
           {ready ? (
             <DataTable
               data={data}
