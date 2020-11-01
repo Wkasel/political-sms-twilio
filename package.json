@@ -21,6 +21,7 @@
     "csv-parser": "^2.3.3",
     "debouncing-batch-queue": "^1.0.3",
     "dotenv": "^8.2.0",
+    "es6-dynamic-template": "^2.0.0",
     "graphql": "^15.4.0",
     "http": "^0.0.1-security",
     "material-table": "^1.69.1",

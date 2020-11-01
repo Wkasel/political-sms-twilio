@@ -60,7 +60,10 @@ const IndexPage = () => {
   const blastItOut = async () => {
     return await Promise.all(data.map((r) => {
       try {
-        if (r.data[0] !== "") {
+        // manual hack to remove headers
+        // TODO: Remove headers from CSV
+        //
+        if (r.data[0] !== "" || r.data[0] !== "ID") {
           // graphql problems because schema is isomorphic, twilio core is file system only (not browser);
           // scrapping gql to just hotwire into a direct rest request
 
@@ -69,7 +72,12 @@ const IndexPage = () => {
           if (r.data[4] !== '') {
             results = axios.post(`/api/sms`, {
               to: r.data[4],
-              body: messageBody
+              body: messageBody,
+              user: {
+                fname: r.data[1],
+                mname: r.data[2],
+                lname: r.data[3]
+              }
             })
           }
 
@@ -79,6 +87,8 @@ const IndexPage = () => {
         }
       } catch (e) {
         console.error(e)
+      } finally {
+        setProcessing(false)
       }
 
 
